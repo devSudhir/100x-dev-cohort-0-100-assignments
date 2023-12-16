@@ -5,7 +5,7 @@
 function wait(n) {
   return new Promise(function (resolve) {
     setTimeout(function () {
-      resolve("Promise resolved");
+      resolve(undefined);
     }, n * 1000);
   });
 }
@@ -15,8 +15,4 @@ result.then(function (data) {
   console.log(data);
 });
 
-async function promiseData() {
-  console.log("Await", await wait(3));
-}
-
-promiseData();
+module.exports = wait;

@@ -1,22 +1,15 @@
 /*
  * Write a function that halts the JS thread (make it busy wait) for a given number of milliseconds.
  * During this time the thread should not be able to do anything else.
+ * the function should return a promise just like before
  */
 
-function sleep(seconds) {
+function sleep(milliseconds) {
   return new Promise(function (resolve) {
     setTimeout(function () {
-      resolve("You can move forward now!");
-    }, seconds * 1000);
+      resolve(undefined);
+    }, milliseconds);
   });
 }
 
-async function wakeupAfter(seconds) {
-  console.log("task1");
-  console.log("task2");
-  console.log(`promise after ${seconds}`, await sleep(seconds));
-  console.log("task3");
-  console.log("task4");
-}
-
-wakeupAfter(3);
+module.exports = sleep;
